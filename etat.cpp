@@ -1,9 +1,5 @@
 #include "etat.h"
 
-etat::etat()
-{
-}
-
 
 //{ OPENPAR, CLOSEPAR, PLUS, MULT, INT, FIN, ERREUR,EXPR}
 bool E0::transition (Automate & automate,Symbole * s) {

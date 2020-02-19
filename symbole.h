@@ -39,7 +39,7 @@ class Expr : public Symbole {
 
 class ExprConst : public Expr{
 public:
-    ExprConst(Symbole * e): Expr(),value(e->eval()) {}
+    ExprConst(Expr * e): Expr(),value(e->eval()) {}
     virtual~ExprConst() {}
     operator int() const { return value; }
     int eval();
@@ -49,7 +49,7 @@ protected:
 
 class ExprPlus : public Expr {
     public:
-        ExprPlus(Symbole * e1,Symbole * e2): Expr(),exprGauche(e1),exprDroite(e2) {}
+        ExprPlus(Expr * e1,Expr * e2): Expr(),exprGauche(e1),exprDroite(e2) {}
         virtual~ExprPlus() {}
         int eval();
     protected:
@@ -59,7 +59,7 @@ class ExprPlus : public Expr {
 
 class ExprMult : public Expr {
     public:
-        ExprMult(Symbole * e1,Symbole * e2): Expr(),exprGauche(e1),exprDroite(e2) {}
+        ExprMult(Expr * e1,Expr * e2): Expr(),exprGauche(e1),exprDroite(e2) {}
         virtual~ExprMult() {}
         int eval();
     protected:
