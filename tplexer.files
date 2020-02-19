@@ -2,8 +2,6 @@ automate.cpp
 automate.h
 etat.cpp
 etat.h
-expression.cpp
-expression.h
 lexer.cpp
 lexer.h
 main.cpp

@@ -3,8 +3,8 @@ EDL = g++
 EXE = main
 COMP = g++ -c 
 
-DEC = lexer.h symbole.h
-DEF = lexer.cpp symbole.cpp
+DEC = lexer.h symbole.h etat.h automate.h 
+DEF = lexer.cpp symbole.cpp etat.cpp automate.cpp 
 OBJ = lexer.o symbole.o
 
 LIBS = -lm 
