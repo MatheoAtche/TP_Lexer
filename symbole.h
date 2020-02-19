@@ -13,7 +13,7 @@ class Symbole {
       virtual ~Symbole() { }
       operator int() const { return ident; }
       virtual void Affiche();
-
+      bool getTerminal();
    protected:
       int ident;
       bool terminal;
@@ -28,45 +28,42 @@ class Entier : public Symbole {
       int valeur;
 };
 
-class Plus : public Symbole {
-   public:
-      Plus() : Symbole(PLUS) { }
-      ~Plus() { }
-      virtual void Affiche();
-};
-
-class Mult : public Symbole {
-   public:
-      Mult() : Symbole(MULT) { }
-      ~Mult() { }
-      virtual void Affiche();
-};
-
-class Openpar : public Symbole {
-   public:
-      Openpar() : Symbole(OPENPAR) { }
-      ~Openpar() { }
-      virtual void Affiche();
-};
-
-class Closepar : public Symbole {
-   public:
-      Closepar() : Symbole(CLOSEPAR) { }
-      ~Closepar() { }
-      virtual void Affiche();
-};
-
-class Closepar : public Symbole {
-   public:
-      Closepar() : Symbole(CLOSEPAR) { }
-      ~Closepar() { }
-      virtual void Affiche();
-};
 
 class Expr : public Symbole {
     public:
         Expr(): Symbole(EXPR,false) {}
         virtual~Expr() {}
-        virtual double eval(const map<string,double>& valeurs) = 0;};
+        void Affiche();
+        virtual int eval() = 0;
+};
 
+class ExprConst : public Expr{
+public:
+    ExprConst(): Expr() {}
+    virtual~ExprConst() {}
+    operator int() const { return value; }
+    int eval();
+protected:
+    int value;
+};
+
+class ExprPlus : public Expr {
+    public:
+        ExprPlus(): Expr() {}
+        virtual~ExprPlus() {}
+        int eval();
+    protected:
+        ExprConst exprDroite;
+        ExprConst exprGauche;
+};
+
+class ExprMult : public Expr {
+    public:
+        ExprMult(): Expr() {}
+        virtual~ExprMult() {}
+        int eval();
+    protected:
+        ExprConst exprDroite;
+        ExprConst exprGauche;
+};
 

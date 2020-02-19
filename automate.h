@@ -9,6 +9,9 @@ class automate
 {
 public:
     automate();
+
+    void decalage (Symbole * s, Etat * e);
+
 };
 
 #endif // AUTOMATE_H
