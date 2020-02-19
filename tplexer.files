@@ -1,9 +1,0 @@
-automate.cpp
-automate.h
-etat.cpp
-etat.h
-lexer.cpp
-lexer.h
-main.cpp
-symbole.cpp
-symbole.h

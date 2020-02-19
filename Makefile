@@ -5,7 +5,7 @@ COMP = g++ -c
 
 DEC = lexer.h symbole.h etat.h automate.h 
 DEF = lexer.cpp symbole.cpp etat.cpp automate.cpp 
-OBJ = lexer.o symbole.o
+OBJ = lexer.o symbole.o etat.o automate.o
 
 LIBS = -lm 
 CPPFLAGS = -ansi -pedantic -Wall -std=c++11 $(P) -g

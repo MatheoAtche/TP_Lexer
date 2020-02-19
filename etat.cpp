@@ -84,20 +84,20 @@ automate.reduction(3,new ExprConst(s1));
 bool E3::transition (Automate & automate,Symbole * s) {
     switch (*s) {
     case PLUS:
-        Expr * s1 = (Expr*) automate.popSymbol();
-        automate.reduction(1,new ExprConst(s1));
+        {Expr * s1 = (Expr*) automate.popSymbol();
+        automate.reduction(1,new ExprConst(s1));}
         break;
     case MULT:
-        Expr * s1 = (Expr*) automate.popSymbol();
-        automate.reduction(1,new ExprConst(s1));
+        {Expr * s1 = (Expr*) automate.popSymbol();
+        automate.reduction(1,new ExprConst(s1));}
         break;
     case CLOSEPAR:
-        Expr * s1 = (Expr*) automate.popSymbol();
-        automate.reduction(1,new ExprConst(s1));
+        {Expr * s1 = (Expr*) automate.popSymbol();
+        automate.reduction(1,new ExprConst(s1));}
         break;
     case FIN:
-        Expr * s1 = (Expr*) automate.popSymbol();
-        automate.reduction(1,new ExprConst(s1));
+        {Expr * s1 = (Expr*) automate.popSymbol();
+        automate.reduction(1,new ExprConst(s1));}
         break;
     default:
        automate.decalage(new Symbole(ERREUR),NULL);
@@ -163,27 +163,27 @@ bool E6::transition (Automate & automate,Symbole * s) {
 bool E7::transition (Automate & automate,Symbole * s) {
     switch (*s) {
     case PLUS:
-        Expr * s1 = (Expr*) automate.popSymbol();
+        {Expr * s1 = (Expr*) automate.popSymbol();
         automate.popAndDestroySymbol();
         Expr * s2 = (Expr*) automate.popSymbol();
-        automate.reduction(3,new ExprPlus(s2,s1));
+        automate.reduction(3,new ExprPlus(s2,s1));}
 
         break;
     case MULT:
         automate.decalage(s,new E5);
         break;
     case CLOSEPAR:
-        Expr * s1 = (Expr*) automate.popSymbol();
+        {Expr * s1 = (Expr*) automate.popSymbol();
         automate.popAndDestroySymbol();
         Expr * s2 = (Expr*) automate.popSymbol();
-        automate.reduction(3,new ExprPlus(s2,s1));
+        automate.reduction(3,new ExprPlus(s2,s1));}
 
         break;
     case FIN:
-        Expr * s1 = (Expr*) automate.popSymbol();
+        {Expr * s1 = (Expr*) automate.popSymbol();
         automate.popAndDestroySymbol();
         Expr * s2 = (Expr*) automate.popSymbol();
-        automate.reduction(3,new ExprPlus(s2,s1));
+        automate.reduction(3,new ExprPlus(s2,s1));}
 
         break;
 
@@ -197,31 +197,31 @@ bool E7::transition (Automate & automate,Symbole * s) {
 bool E8::transition (Automate & automate,Symbole * s) {
     switch (*s) {
     case PLUS:
-        Expr * s1 = (Expr*) automate.popSymbol();
+        {Expr * s1 = (Expr*) automate.popSymbol();
         automate.popAndDestroySymbol();
         Expr * s2 = (Expr*) automate.popSymbol();
-        automate.reduction(3,new ExprMult(s2,s1));
+        automate.reduction(3,new ExprMult(s2,s1));}
 
         break;
     case MULT:
-        Expr * s1 = (Expr*) automate.popSymbol();
+        {Expr * s1 = (Expr*) automate.popSymbol();
         automate.popAndDestroySymbol();
         Expr * s2 = (Expr*) automate.popSymbol();
-        automate.reduction(3,new ExprMult(s2,s1));
+        automate.reduction(3,new ExprMult(s2,s1));}
 
         break;
     case CLOSEPAR:
-        Expr * s1 = (Expr*) automate.popSymbol();
+        {Expr * s1 = (Expr*) automate.popSymbol();
         automate.popAndDestroySymbol();
         Expr * s2 = (Expr*) automate.popSymbol();
-        automate.reduction(3,new ExprMult(s2,s1));
+        automate.reduction(3,new ExprMult(s2,s1));}
 
         break;
     case FIN:
-        Expr * s1 = (Expr*) automate.popSymbol();
+        {Expr * s1 = (Expr*) automate.popSymbol();
         automate.popAndDestroySymbol();
         Expr * s2 = (Expr*) automate.popSymbol();
-        automate.reduction(3,new ExprMult(s2,s1));
+        automate.reduction(3,new ExprMult(s2,s1));}
 
         break;
     default:
@@ -234,28 +234,28 @@ bool E8::transition (Automate & automate,Symbole * s) {
 bool E9::transition (Automate & automate,Symbole * s) {
     switch (*s) {
     case PLUS:
-        automate.popAndDestroySymbol();
+        {automate.popAndDestroySymbol();
         Expr * s1 = (Expr*) automate.popSymbol();
         automate.popAndDestroySymbol();
-        automate.reduction(3,new ExprConst(s1));
+        automate.reduction(3,new ExprConst(s1));}
         break;
     case MULT:
-        automate.popAndDestroySymbol();
+        {automate.popAndDestroySymbol();
         Expr * s1 = (Expr*) automate.popSymbol();
         automate.popAndDestroySymbol();
-        automate.reduction(3,new ExprConst(s1));
+        automate.reduction(3,new ExprConst(s1));}
         break;
     case CLOSEPAR:
-        automate.popAndDestroySymbol();
+        {automate.popAndDestroySymbol();
         Expr * s1 = (Expr*) automate.popSymbol();
         automate.popAndDestroySymbol();
-        automate.reduction(3,new ExprConst(s1));
+        automate.reduction(3,new ExprConst(s1));}
         break;
     case FIN:
-        automate.popAndDestroySymbol();
+        {automate.popAndDestroySymbol();
         Expr * s1 = (Expr*) automate.popSymbol();
         automate.popAndDestroySymbol();
-        automate.reduction(3,new ExprConst(s1));
+        automate.reduction(3,new ExprConst(s1));}
         break;
     default:
        automate.decalage(new Symbole(ERREUR),NULL);

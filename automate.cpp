@@ -1,26 +1,27 @@
 #include "automate.h"
 
-Automate::automate()
+Automate::Automate(Lexer * l)
 {
-
+    this->l = l;
 }
 
 void Automate:: decalage (Symbole * s, Etat * e) {
-    symbolstack.push_back(s);
-    statestack.push_back(e);
-    if(s.getTerminal()) {
-        lexer->Avancer();
+    symbolstack.push(s);
+    statestack.push(e);
+    if(s->getTerminal()) {
+        l->Avancer();
     }
 }
 
 void Automate::reduction(int n,Symbole * s) {
     //on dépile n états
-    for(inti=0;i<n;i++){
-        delete(statestack.back());
-        statestack.pop_back();
+    for(int i=0;i<n;i++){
+        delete(statestack.top());
+        statestack.pop();
     }
-    statestack.back()->transition(*this,s);
+    statestack.top()->transition(*this,s);
 }
+
 Etat * Automate::popSymbol(){     //pop le stack et renvoi le pointeur de l'élément
     Symbole * s = this->symbolstack.top();
     this->symbolstack.pop();
