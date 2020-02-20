@@ -15,9 +15,23 @@ void Entier::Affiche() {
    cout<<"("<<valeur<<")";
 }
 
+int Entier::getValeur(){
+    return this->valeur;
+}
+
 void Expr::Affiche() {
    Symbole::Affiche();
    cout<<"("<<eval()<<")";
+}
+
+void ExprConst::Affiche() {
+   Expr::Affiche();
+}
+void ExprMult::Affiche() {
+   Expr::Affiche();
+}
+void ExprPlus::Affiche() {
+   Expr::Affiche();
 }
 
 int ExprConst::eval(){
@@ -25,9 +39,9 @@ int ExprConst::eval(){
 }
 
 int ExprPlus::eval(){
-    return (int)exprDroite + (int)exprGauche;
+    return exprDroite->eval() + exprGauche->eval();
 }
 
 int ExprMult::eval(){
-    return (int)exprDroite * (int)exprGauche;
+    return exprDroite->eval() * exprGauche->eval();
 }

@@ -7,13 +7,12 @@ int main(void) {
    string chaine("(1+34)*123");
    Lexer l(chaine);
    Automate a(&l);
-
    //deroulement de l'algo de bottom up
    a.lecture();
+   cout<<"sorti de la lecture de l'automate"<<endl;   // debug
    Expr * resultat  =  a.popSymbol();
-   cout<<resultat<<endl;
-
-
+   cout<<resultat->eval()<<endl;
+   cout<<"coucou c'est fini"<<endl;
    return 0;
 }
 

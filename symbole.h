@@ -3,13 +3,13 @@
 #include <string>
 using namespace std;
 
-enum Identificateurs { OPENPAR, CLOSEPAR, PLUS, MULT, INT, FIN, ERREUR, EXPR};
+enum Identificateurs { OPENPAR, CLOSEPAR, PLUS, MULT, INT, FIN, ERREUR, EXPR };
 
 const string Etiquettes[] = { "OPENPAR", "CLOSEPAR", "PLUS", "MULT", "INT", "FIN", "ERREUR", "EXPR" };
 
 class Symbole {
    public:
-      Symbole(int i, bool b = true) : ident(i),terminal(b) {  }
+      Symbole(int i, bool b = false) : ident(i),terminal(b) {  }
       virtual ~Symbole() { }
       operator int() const { return ident; }
       virtual void Affiche();
@@ -21,9 +21,10 @@ class Symbole {
 
 class Entier : public Symbole {
    public:
-      Entier(int v) : Symbole(INT), valeur(v) { }
+      Entier(int v) : Symbole(INT,true), valeur(v) { }
       ~Entier() { }
       virtual void Affiche();
+      int getValeur();
    protected:
       int valeur;
 };
@@ -39,8 +40,9 @@ class Expr : public Symbole {
 
 class ExprConst : public Expr{
 public:
-    ExprConst(Expr * e): Expr(),value(e->eval()) {}
+    ExprConst(Entier * e): Expr(),value(e->getValeur()) {}
     virtual~ExprConst() {}
+    void Affiche();
     operator int() const { return value; }
     int eval();
 protected:
@@ -51,19 +53,21 @@ class ExprPlus : public Expr {
     public:
         ExprPlus(Expr * e1,Expr * e2): Expr(),exprGauche(e1),exprDroite(e2) {}
         virtual~ExprPlus() {}
+        void Affiche();
         int eval();
     protected:
-        ExprConst exprGauche;
-        ExprConst exprDroite;
+        Expr * exprGauche;
+        Expr * exprDroite;
 };
 
 class ExprMult : public Expr {
     public:
         ExprMult(Expr * e1,Expr * e2): Expr(),exprGauche(e1),exprDroite(e2) {}
         virtual~ExprMult() {}
+        void Affiche();
         int eval();
     protected:
-        ExprConst exprGauche;
-        ExprConst exprDroite;
+        Expr * exprGauche;
+        Expr * exprDroite;
 };
 

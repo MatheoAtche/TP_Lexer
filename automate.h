@@ -3,6 +3,7 @@
 #ifndef AUTOMATE_H
 #define AUTOMATE_H
 
+#include <iostream> // debug
 #include <string>
 using namespace std;
 

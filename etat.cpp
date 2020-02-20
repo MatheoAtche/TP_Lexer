@@ -1,6 +1,10 @@
 #include "etat.h"
 
 
+void Etat::print () const{
+    cout<<this->name<<endl;
+}
+
 //{ OPENPAR, CLOSEPAR, PLUS, MULT, INT, FIN, ERREUR,EXPR}
 bool E0::transition (Automate & automate,Symbole * s) {
     switch (*s) {
@@ -71,33 +75,38 @@ Expr * s2 = (Expr*) automate.popSymbol();
 automate.reduction(3,new ExprMult(s2,s1));
 
  ___pour Const___
-Expr * s1 = (Expr*) automate.popSymbol();
-automate.reduction(1,new ExprConst(s1));
+Entier * e = (Entier*) automate.popSymbol();
+automate.reduction(1,new ExprConst(e));
 
  ___pour Parenthèses___
 automate.popAndDestroySymbol();
-Expr * s1 = (Expr*) automate.popSymbol();
+Expr * e = (Expr*) automate.popSymbol();
 automate.popAndDestroySymbol();
-automate.reduction(3,new ExprConst(s1));
+automate.reduction(3,e);
 
 */
 bool E3::transition (Automate & automate,Symbole * s) {
+    cout<<"dans la transition E3"<<endl;         //debug
     switch (*s) {
     case PLUS:
-        {Expr * s1 = (Expr*) automate.popSymbol();
-        automate.reduction(1,new ExprConst(s1));}
+        {Entier * e = (Entier*) automate.popSymbol();
+
+        cout<<"reduction presque faite"<<endl;    //debug   
+        automate.reduction(1,new ExprConst(e));
+        cout<<"reduction faite"<<endl;    //debug
+        }
         break;
     case MULT:
-        {Expr * s1 = (Expr*) automate.popSymbol();
-        automate.reduction(1,new ExprConst(s1));}
+        {Entier * e = (Entier*) automate.popSymbol();
+        automate.reduction(1,new ExprConst(e));}
         break;
     case CLOSEPAR:
-        {Expr * s1 = (Expr*) automate.popSymbol();
-        automate.reduction(1,new ExprConst(s1));}
+        {Entier * e = (Entier*) automate.popSymbol();
+        automate.reduction(1,new ExprConst(e));}
         break;
     case FIN:
-        {Expr * s1 = (Expr*) automate.popSymbol();
-        automate.reduction(1,new ExprConst(s1));}
+        {Entier * e = (Entier*) automate.popSymbol();
+        automate.reduction(1,new ExprConst(e));}
         break;
     default:
        automate.decalage(new Symbole(ERREUR),NULL);
@@ -143,9 +152,13 @@ bool E5::transition (Automate & automate,Symbole * s) {
 }
 
 bool E6::transition (Automate & automate,Symbole * s) {
+    cout<<"dans la transition E6"<<endl;         //debug
     switch (*s) {
     case PLUS:
+        {
+        cout<<"on reconnait un PLUS dans l'étape E6"<<endl;   // debug
         automate.decalage(s,new E4);
+        }
         break;
     case MULT:
         automate.decalage(s,new E5);
@@ -235,27 +248,27 @@ bool E9::transition (Automate & automate,Symbole * s) {
     switch (*s) {
     case PLUS:
         {automate.popAndDestroySymbol();
-        Expr * s1 = (Expr*) automate.popSymbol();
+        Expr * e = (Expr*) automate.popSymbol();
         automate.popAndDestroySymbol();
-        automate.reduction(3,new ExprConst(s1));}
+        automate.reduction(3,e);}
         break;
     case MULT:
         {automate.popAndDestroySymbol();
-        Expr * s1 = (Expr*) automate.popSymbol();
+        Expr * e = (Expr*) automate.popSymbol();
         automate.popAndDestroySymbol();
-        automate.reduction(3,new ExprConst(s1));}
+        automate.reduction(3,e);}
         break;
     case CLOSEPAR:
         {automate.popAndDestroySymbol();
-        Expr * s1 = (Expr*) automate.popSymbol();
+        Expr * e = (Expr*) automate.popSymbol();
         automate.popAndDestroySymbol();
-        automate.reduction(3,new ExprConst(s1));}
+        automate.reduction(3,e);}
         break;
     case FIN:
         {automate.popAndDestroySymbol();
-        Expr * s1 = (Expr*) automate.popSymbol();
+        Expr * e = (Expr*) automate.popSymbol();
         automate.popAndDestroySymbol();
-        automate.reduction(3,new ExprConst(s1));}
+        automate.reduction(3,e);}
         break;
     default:
        automate.decalage(new Symbole(ERREUR),NULL);
