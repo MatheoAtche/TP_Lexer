@@ -15,9 +15,9 @@ bool E0::transition (Automate & automate,Symbole * s) {
         break;
     default:
        automate.decalage(new Symbole(ERREUR),NULL);
-       return false;
+       return true;
     }
-    return true;
+    return false;
 }
 
 bool E1::transition (Automate & automate,Symbole * s) {
@@ -29,13 +29,13 @@ bool E1::transition (Automate & automate,Symbole * s) {
         automate.decalage(s,new E5);
         break;
     case FIN:
-        return false;
+        return true;
         break;
     default:
        automate.decalage(new Symbole(ERREUR),NULL);
-       return false;
+       return true;
     }
-    return true;
+    return false;
 }
 
 bool E2::transition (Automate & automate,Symbole * s) {
@@ -51,9 +51,9 @@ bool E2::transition (Automate & automate,Symbole * s) {
         break;
     default:
        automate.decalage(new Symbole(ERREUR),NULL);
-       return false;
+       return true;
     }
-    return true;
+    return false;
 }
 
 /*
@@ -101,9 +101,9 @@ bool E3::transition (Automate & automate,Symbole * s) {
         break;
     default:
        automate.decalage(new Symbole(ERREUR),NULL);
-       return false;
+       return true;
     }
-    return true;
+    return false;
 }
 
 bool E4::transition (Automate & automate,Symbole * s) {
@@ -119,9 +119,9 @@ bool E4::transition (Automate & automate,Symbole * s) {
         break;
     default:
        automate.decalage(new Symbole(ERREUR),NULL);
-       return false;
+       return true;
     }
-    return true;
+    return false;
 }
 
 bool E5::transition (Automate & automate,Symbole * s) {
@@ -137,9 +137,9 @@ bool E5::transition (Automate & automate,Symbole * s) {
         break;
     default:
        automate.decalage(new Symbole(ERREUR),NULL);
-       return false;
+       return true;
     }
-    return true;
+    return false;
 }
 
 bool E6::transition (Automate & automate,Symbole * s) {
@@ -155,9 +155,9 @@ bool E6::transition (Automate & automate,Symbole * s) {
         break;
     default:
        automate.decalage(new Symbole(ERREUR),NULL);
-       return false;
+       return true;
     }
-    return true;
+    return false;
 }
 
 bool E7::transition (Automate & automate,Symbole * s) {
@@ -189,9 +189,9 @@ bool E7::transition (Automate & automate,Symbole * s) {
 
     default:
        automate.decalage(new Symbole(ERREUR),NULL);
-       return false;
+       return true;
     }
-    return true;
+    return false;
 }
 
 bool E8::transition (Automate & automate,Symbole * s) {
@@ -226,9 +226,9 @@ bool E8::transition (Automate & automate,Symbole * s) {
         break;
     default:
        automate.decalage(new Symbole(ERREUR),NULL);
-       return false;
+       return true;
     }
-    return true;
+    return false;
 }
 
 bool E9::transition (Automate & automate,Symbole * s) {
@@ -259,9 +259,9 @@ bool E9::transition (Automate & automate,Symbole * s) {
         break;
     default:
        automate.decalage(new Symbole(ERREUR),NULL);
-       return false;
+       return true;
     }
-    return true;
+    return false;
 }
 
 

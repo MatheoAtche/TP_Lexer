@@ -1,18 +1,19 @@
 #include <iostream>
 #include "lexer.h"
-
+#include "automate.h"
 
 int main(void) {
+   //pas besoin de new car pas d'allocation dynamique
    string chaine("(1+34)*123");
-
    Lexer l(chaine);
+   Automate a(&l);
 
-   Symbole * s;
-   while(*(s=l.Consulter())!=FIN) {
-      s->Affiche();
-      cout<<endl;
-      l.Avancer();
-   }
+   //deroulement de l'algo de bottom up
+   a.lecture();
+   Expr * resultat  =  a.popSymbol();
+   cout<<resultat<<endl;
+
+
    return 0;
 }
 
