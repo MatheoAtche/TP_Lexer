@@ -7,12 +7,12 @@ bool Symbole::getTerminal(){
 }
 
 void Symbole::Affiche() {
-   cout<<Etiquettes[ident];
+   cout << Etiquettes[ident];
 }
 
 void Entier::Affiche() {
    Symbole::Affiche();
-   cout<<"("<<valeur<<")";
+   cout << "(" << valeur << ")";
 }
 
 int Entier::getValeur(){
@@ -21,7 +21,7 @@ int Entier::getValeur(){
 
 void Expr::Affiche() {
    Symbole::Affiche();
-   cout<<"("<<eval()<<")";
+   cout << "(" << eval() << ")";
 }
 
 void ExprConst::Affiche() {

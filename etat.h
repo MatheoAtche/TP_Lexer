@@ -1,7 +1,6 @@
 #ifndef ETAT_H
 #define ETAT_H
 
-#include <iostream>                 //debug
 #include <string>
 using namespace std;
 
