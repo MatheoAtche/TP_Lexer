@@ -20,8 +20,7 @@ int Entier::getValeur(){
 }
 
 void Expr::Affiche() {
-   Symbole::Affiche();
-   cout << "(" << eval() << ")";
+   cout <<  eval();
 }
 
 void ExprConst::Affiche() {

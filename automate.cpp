@@ -24,7 +24,7 @@ void Automate::reduction(int n,Symbole * s) {
 }
 
 //pop le stack et renvoi le pointeur de l'élément
-Expr * Automate::popSymbol(){     
+Symbole * Automate::popSymbol(){     
     Symbole * s = this->symbolstack.top();
     this->symbolstack.pop();
     return (Expr*)s;

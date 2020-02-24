@@ -11,8 +11,11 @@ int main(void) {
    Automate a(&l);
    //deroulement de l'algo de bottom up
    a.lecture();
-   Expr * resultat  =  a.popSymbol();
-   cout << "= " << resultat->eval() << endl;
+   Expr * resultat  =  (Expr *)a.popSymbol();
+   //amélioration: mettre variables supplémentaire au symbole Erreur pour avoir plus d'information sur l'érreur
+   cout<< "= ";
+   resultat->Affiche();
+   cout << endl;
    return 0;
 }
 
